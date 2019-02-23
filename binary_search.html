@@ -1,0 +1,87 @@
+<!-- 
+    Author: Diakite Malick 
+    Date: Saturday 2/23/2019 
+    Program: This program implement a searching algrithm called Binary Search
+            on a sorted List of numbers in an array.
+            Basically The program generate random number in the first position
+            and that number is to as index of the target we want to find in the array.  
+ -->
+
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <title>Binary Search</title>
+ </head>
+ <body>
+    <script>
+     
+    // Create an array of sorted list
+
+    var primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 
+        41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97],
+
+        
+        n = primes.length, // Get the size of the array
+
+        rand_num = Math.floor(Math.random() * n), // Generate a random int between 0 and n
+
+        target = primes[rand_num];
+        var result = binarySearch(primes, n, target);
+
+        document.write("The target value " + target + " is found at loc[" + result +"] in the array <br><br>");
+
+        for(var i = 0; i < n; i++)
+        {
+            document.write("loc[" + i + "] = " + primes[i] + "<br>");
+        }
+
+        // Function for the binary search
+        function binarySearch(array, size, key)
+        {
+            var min = 0,
+            max = size - 1,
+            mid,
+            step = 0,
+            count = 0;
+
+            // Stop condition
+            while(min <= max)
+            {
+                // Get integer part of the division
+                mid = Math.floor((min + max) / 2);
+
+                // Increment the count to hold the number of possible guesses
+                count++;
+                // Show The guesses
+                document.write("step[" + step + "]: " + mid + "<br><br>");
+                step++;
+            
+                // Check if mid is equal to key
+                if(array[mid] === key)
+                {
+                    // Display the number of guesses it's take to find the key in the array
+                    document.write("Number of guesses made is = " + count + "<br>");
+                    return mid;
+                }
+                else if(array[mid] > key)
+                {
+                    // if mid > the key then search left half   
+                    max = mid - 1;
+                } 
+                else
+                {
+                    min = mid + 1; // else seach right half 
+                }
+            }
+
+            // If key not found
+            return -1;
+        }
+    
+     
+    </script>
+ </body>
+ </html>
