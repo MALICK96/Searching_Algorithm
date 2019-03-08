@@ -1,0 +1,1 @@
+This Repository conatins scripts written in Javascript that implement the some of the most famous searching and sorting algorithms.
